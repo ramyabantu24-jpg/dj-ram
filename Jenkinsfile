@@ -26,7 +26,7 @@ pipeline {
         ]){
             sh '''
             docker login -u $USER -p $PASS
-            docker push USER/practiceimg:${BUILD_NUMBER}
+            docker push $USER/practiceimg:${BUILD_NUMBER}
             '''
         }
         }
