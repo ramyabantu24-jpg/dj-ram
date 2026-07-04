@@ -13,6 +13,21 @@ pipeline {
                 sh 'docker tag r-dimage:v1 banturamya/r-dimage:v1'
             }
         }
+
+        stage('push')
+        steps{
+            echo 'pushing image'
+            withCredentials([
+                usernamePassword: 'docker-cred',
+                usernameVariable: 'USER',
+                passwordVariable: 'PASS'
+        ]){
+            sh '''
+            docker login -u $USER -p $PASS
+            docker push banturamya/r-dimage:v1
+            '''
+        }
+        }
     }
 
 }
