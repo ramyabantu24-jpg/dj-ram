@@ -34,7 +34,7 @@ pipeline {
         stage('run image'){
             steps{
                 echo 'running image'
-                sh 'docker run -d --name practimg -p 8082:80 banturamya/practiceimg:${BUILD_NUMBER}'
+                sh 'docker run -d --name practimg -p 8083:80 banturamya/practiceimg:${BUILD_NUMBER}'
             }
         }
         
