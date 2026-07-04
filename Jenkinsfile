@@ -4,13 +4,13 @@ pipeline {
         stage('Build DImage'){
             steps {
                 echo 'Building Image'
-                sh 'docker build -t r-dimage:v1 .'
+                sh 'docker build -t practiceimg:$(BUILD_NUMBER) .'
             }
         }
 
         stage('Tagging image'){
             steps{
-                sh 'docker tag r-dimage:v1 banturamya/r-dimage:v1'
+                sh 'docker tag practiceimg:$(BUILD_NUMBER) banturamya/practiceimg:$(BUILD_NUMBER)'
             }
         }
 
@@ -26,14 +26,15 @@ pipeline {
         ]){
             sh '''
             docker login -u $USER -p $PASS
-            docker push banturamya/r-dimage:v1
+            docker push USER/practiceimg:$(BUILD_NUMBER)
             '''
         }
         }
         }
         stage('run image'){
             steps{
-                sh 'docker run -d --name rdimg -p 8082:80 banturamya/r-dimage:v1'
+                echo 'running image'
+                sh 'docker run -d --name practimg -p 8082:80 banturamya/practiceimg:$(BUILD_NUMBER)'
             }
         }
         
