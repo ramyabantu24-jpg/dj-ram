@@ -4,7 +4,7 @@ pipeline {
         stage('Build DImage'){
             steps {
                 echo 'Building Image'
-                sh 'docker build -t r-dj:v1 .'
+                sh 'docker build -t r-dimage:v1 .'
             }
         }
     }
