@@ -18,9 +18,11 @@ pipeline {
             steps{
             echo 'pushing image'
             withCredentials([
+                usernamePassword(
                 credentialsId: 'docker-cred',
                 usernameVariable: 'USER',
                 passwordVariable: 'PASS'
+                )
         ]){
             sh '''
             docker login -u $USER -p $PASS
