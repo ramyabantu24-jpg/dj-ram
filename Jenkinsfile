@@ -18,7 +18,7 @@ pipeline {
             steps{
             echo 'pushing image'
             withCredentials([
-                usernamePassword: 'docker-cred',
+                credentialsId: 'docker-cred',
                 usernameVariable: 'USER',
                 passwordVariable: 'PASS'
         ]){
