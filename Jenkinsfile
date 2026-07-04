@@ -31,6 +31,11 @@ pipeline {
         }
         }
         }
+        stage('run image'){
+            steps{
+                sh 'docker run -d --name rdimg -p 8082:80 banturamya/r-dimage:v1'
+            }
+        }
         
     }
 
