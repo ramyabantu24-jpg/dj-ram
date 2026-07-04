@@ -14,8 +14,8 @@ pipeline {
             }
         }
 
-        stage('push')
-        steps{
+        stage('push'){
+            steps{
             echo 'pushing image'
             withCredentials([
                 usernamePassword: 'docker-cred',
@@ -28,6 +28,8 @@ pipeline {
             '''
         }
         }
+        }
+        
     }
 
 }
